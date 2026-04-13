@@ -237,56 +237,6 @@ export const environment = {
 
 If you need to point the app to another backend, update `baseUrl` in both environment files.
 
-## Available Scripts
-
-From `package.json`:
-
-- `npm start` - runs `ng serve`
-- `npm run build` - creates the production browser/server build
-- `npm run watch` - runs Angular build in watch mode with development configuration
-- `npm test` - runs the Vitest-based Angular unit tests
-- `npm run serve:ssr:e-commerce` - starts the built SSR server
-
-## Validation Summary
-
-The project was validated against the current workspace state on **April 13, 2026**.
-
-Verified successfully:
-
-- Angular production build completes successfully
-- SSR output is generated into `dist/e-commerce`
-- Existing Vitest suite passes
-- Standalone route loading and SSR configuration are valid for Angular 21
-
-Additional improvements applied during validation:
-
-- restored working guest cart/wishlist persistence across the UI
-- fixed malformed promo-card icon text
-- replaced loose `any` typing in promo-card data with a typed interface
-
-## Known Issues
-
-- The automated test coverage is minimal. The project currently has one spec file covering the root app shell only.
-- The search feature loads the full product catalog client-side and then filters locally. This is acceptable for small datasets, but server-side search/filtering would scale better.
-- There are duplicated review UI implementations under:
-  - `src/app/features/productDetails/components/product-reviews`
-  - `src/app/features/productDetails/components/details-review`
-  Only one path is actively used, so this should be consolidated to reduce maintenance overhead.
-- `angular.json` includes a `deploy` target using `angular-cli-ghpages`, but this project is SSR-enabled. GitHub Pages is not a natural deployment target for the server-rendered build without switching to a prerender/static deployment strategy.
-
-## Exact Fixes Recommended For Remaining Issues
-
-- **Increase test coverage**
-  - Add service tests for `AuthService`, `CartService`, `WishlistService`, and `ProductService`
-  - Add component tests for checkout, login, cart, and product-details flows
-- **Move search filtering to the backend**
-  - Replace the current `getAllProducts()` preload on the search page with server queries that pass `q`, `price`, `brand`, `category`, `sort`, and `page` directly to the API
-- **Remove duplicated review implementation**
-  - Keep either `product-reviews` or `details-review`
-  - Update imports/usages and delete the unused tree
-- **Clarify deployment strategy**
-  - If SSR is required, deploy to a Node-capable host
-  - If GitHub Pages is required, switch to prerender/static hosting and remove the SSR-dependent deploy path
 
 ## Future Improvements
 
@@ -296,8 +246,4 @@ Additional improvements applied during validation:
 - Add analytics, SEO metadata, and richer Open Graph support
 - Add persistent recently viewed products
 - Add coupon, payment, and checkout success/cancel pages
-- Add CI for build and test verification
 
-## Notes
-
-This README is based on the actual codebase, current routing setup, environment files, dependencies, and verified build/test behavior in this workspace.
