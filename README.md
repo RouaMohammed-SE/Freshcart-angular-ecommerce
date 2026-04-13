@@ -12,7 +12,6 @@ The application uses Angular SSR with hydration, lazy-loaded feature routes, Ang
 ## Live Demo
 
 - Production URL: `https://freshcart-angular-ecommerce.vercel.app`
-- GitHub-ready demo focus: SSR, standalone Angular 21, API integration, bilingual UI, and full shopping flow
 ## Features
 
 - Standalone Angular 21 architecture with lazy-loaded feature routes
