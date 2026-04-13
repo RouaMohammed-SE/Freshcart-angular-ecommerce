@@ -59,7 +59,10 @@ export class AuthService {
     return this.httpClient.post<IUserResponse>(`${this.baseUrl}/v1/auth/signin`, loginForm).pipe(
       tap((response: IUserResponse) => {
         const token = response?.token;
-        this.cookieService.set('token', token);
+        const isSecureContext =
+          typeof globalThis.location !== 'undefined' && globalThis.location.protocol === 'https:';
+
+        this.cookieService.set('token', token, undefined, '/', undefined, isSecureContext, 'Lax');
         const decodedToken: IToken = jwtDecode<IToken>(token);
         const user: IUser = {
           ...response.user,
@@ -71,7 +74,7 @@ export class AuthService {
   }
 
   logout(): void {
-    this.cookieService.delete('token');
+    this.cookieService.delete('token', '/');
     this.storageService.removeItem('user');
     this.currentUserSubject.next(null);
   }

@@ -6,7 +6,8 @@ import { catchError, throwError } from 'rxjs';
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService: AuthService = inject(AuthService);
   const token = authService.getToken();
-  const isAuthRequest = req.url.includes('signup') || req.url.includes('login');
+  const authEndpoints = ['signup', 'signin', 'forgotpasswords', 'verifyResetCode', 'resetpassword'];
+  const isAuthRequest = authEndpoints.some((endpoint) => req.url.includes(endpoint));
 
   if (!isAuthRequest) {
     if (token) {
