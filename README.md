@@ -1,9 +1,18 @@
 # FreshCart Angular 21 E-Commerce
 
+[![Angular](https://img.shields.io/badge/Angular-21-DD0031?logo=angular&logoColor=white)](https://angular.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![SSR](https://img.shields.io/badge/Rendering-SSR%20%2B%20Hydration-0F172A)](https://angular.dev/guide/ssr)
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?logo=vercel&logoColor=white)](https://freshcart-angular-ecommerce.vercel.app)
+
 FreshCart is a standalone Angular 21 e-commerce storefront that consumes the Route E-Commerce API to deliver a complete shopping flow: authentication, product discovery, category and brand browsing, wishlist management, cart management, checkout, order history, profile settings, and bilingual UI support.
 
 The application uses Angular SSR with hydration, lazy-loaded feature routes, Angular signals for UI state, and a service-driven data layer built on `HttpClient`. It is structured as a portfolio-ready storefront rather than a design-system demo, with real API integration and production build support.
 
+## Live Demo
+
+- Production URL: `https://freshcart-angular-ecommerce.vercel.app`
+- GitHub-ready demo focus: SSR, standalone Angular 21, API integration, bilingual UI, and full shopping flow
 ## Features
 
 - Standalone Angular 21 architecture with lazy-loaded feature routes
@@ -36,6 +45,7 @@ The application uses Angular SSR with hydration, lazy-loaded feature routes, Ang
 - `swiper`
 - `ngx-cookie-service`
 - Express `5`
+- Vercel
 
 ## What The App Does
 
